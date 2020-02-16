@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 import Header from "./Componente/Header";
-import AgregarCita from './AgregarCitas';
+import AgregarCita from './Componente/AgregarCitas';
+import ListaCitas from './Componente/ListaCitas';
+
 
 
 class App extends Component {
+  state = {
+    citas: []
+  }
 
-  crearCita = () => {
-    console.log("Hola Joaquin!!!")
+  crearCita = (nuevaCita) => {
+    // console.log(cita);
+
+    const citas = [...this.state.citas, nuevaCita];
+
+    console.log(citas);
+
+    this.setState({
+      citas
+    });
+
+
+   
   }
   render() {
      return (
@@ -22,10 +38,13 @@ class App extends Component {
           />
 
         </div>
-        <div className="col-md-6"></div>
+        <div className="col-md-6">
+          <ListaCitas
+           citas ={this.state.citas}
+          />
+        </div>
       </div>
-      
-      
+  
     </div>
   );
   }
